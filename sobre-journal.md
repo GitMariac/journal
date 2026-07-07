@@ -2,9 +2,9 @@
 
 ## O Projeto
 
-O **Journal** nasce com a proposta de ser mais do que um aplicativo de anotações ou uma agenda digital. Seu objetivo é oferecer um espaço central para organização pessoal e acadêmica, permitindo que estudantes concentrem sua rotina, seus estudos e suas metas em um único ambiente.
+O **Journal** nasce com a proposta de oferecer um espaço central para organização pessoal e acadêmica, permitindo que estudantes concentrem sua rotina, seus estudos, suas finanças e suas metas em um único ambiente.
 
-A ideia do projeto é desenvolver uma ferramenta que acompanhe o usuário ao longo da sua jornada de estudos, auxiliando na organização das atividades diárias sem se limitar a apenas uma função específica. Em vez de reunir diversas aplicações separadas para calendário, tarefas, notas e planejamento, o Journal busca integrar essas necessidades em uma única experiência.
+A ideia do projeto é desenvolver uma ferramenta que acompanhe o usuário ao longo da sua jornada de estudos, auxiliando na organização das atividades diárias sem se limitar a apenas uma função específica. Em vez de reunir diversas aplicações separadas para calendário, tarefas, notas e planejamento, o Journal busca integrar essas necessidades em uma única experiência facilitanto a vida do usuário para o que ele possa focar no que realmente importa: estudar.
 
 O projeto será desenvolvido pensando em crescimento contínuo. Em vez de tentar entregar todas as funcionalidades desde o início, o desenvolvimento seguirá uma estratégia incremental, na qual uma base sólida será construída primeiro e novos módulos serão adicionados ao longo do tempo.
 
@@ -16,7 +16,7 @@ O Journal pretende ser um **planner digital modular**, voltado principalmente pa
 
 Mais do que um simples aplicativo de produtividade, o objetivo é criar um espaço que acompanhe diferentes fases da vida estudantil, desde o Ensino Médio até a universidade ou a preparação para concursos públicos.
 
-O foco principal não está na quantidade de funcionalidades, mas na experiência de organização que o produto oferece.
+O foco principal não está na quantidade de funcionalidades, mas na experiência de organização que o produto oferece permitindo o usuário a focar em seus objetivos. 
 
 ---
 
@@ -67,7 +67,8 @@ Por exemplo:
 * lista de tarefas;
 * controle financeiro;
 * lembretes;
-* documentos de estudo.
+* documentos de estudo;
+*tabelas de rotina de estudo.
 
 Essa fragmentação dificulta o acompanhamento da rotina e torna o processo de organização mais cansativo.
 
