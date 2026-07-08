@@ -1,287 +1,416 @@
-# Information Architecture
+# Information Architecture (IA)
 
-## Objetivo
-
-A Arquitetura da Informação (Information Architecture – IA) define a organização estrutural do Journal, estabelecendo como seus principais elementos se relacionam e como o usuário navega entre eles.
-
-Diferentemente de uma arquitetura baseada em funcionalidades isoladas, o Journal foi concebido como um ambiente de organização pessoal inspirado em planners e fichários físicos, onde o usuário registra continuamente suas informações em documentos organizados por divisórias.
-
-As ferramentas disponíveis (Agenda, Finanças, Pomodoro, entre outras) complementam essa experiência, mas não representam sua estrutura principal.
+> Versão 1.0
 
 ---
 
-# Modelo Conceitual
+# 1. Objetivo
 
-O Journal é composto por cinco conceitos fundamentais.
+A Arquitetura da Informação do **Journal** define como as funcionalidades e os conteúdos da aplicação são organizados, apresentados e acessados pelo usuário.
+
+Este documento estabelece a estrutura de navegação do sistema, servindo como referência para o desenvolvimento do UX/UI, Front-end, Back-end e modelagem de dados.
+
+---
+
+# 2. Princípios da Arquitetura
+
+O Journal possui dois tipos de elementos:
+
+## Funcionalidades do sistema
+
+São recursos nativos da aplicação.
+
+Existem para todos os usuários.
+
+Exemplos:
+
+- Dashboard
+- Agenda
+- Cronograma de Estudos
+- Finanças
+- Pomodoro
+- Perfil
+- Configurações
+
+Esses elementos fazem parte da estrutura fixa da plataforma.
+
+---
+
+## Conteúdo do usuário
+
+São elementos criados pelo próprio usuário.
+
+Exemplos:
+
+- Divisórias
+- Folhas
+- Notas
+- Cronograma de Estudo Editado
+
+
+Esses elementos pertencem ao usuário e podem variar conforme sua organização pessoal.
+
+---
+
+# 3. Estrutura Global
 
 ```text
 Journal
 │
 ├── Dashboard
-├── Divisórias
-├── Documentos
-├── Templates
-└── Ferramentas
+├── Agenda
+├── Notas
+├── Cronograma de Estudos
+├── Finanças
+├── Fichários
+├── Pomodoro
+├── Perfil
+├── Configurações
+└── Sobre
 ```
 
-Cada um desses elementos possui uma responsabilidade específica dentro da plataforma.
-
 ---
 
-# Dashboard
+# 4. Dashboard
 
-O Dashboard é o ponto inicial do Journal.
+O Dashboard representa a página inicial da aplicação.
 
-Seu objetivo não é apresentar todas as funcionalidades do sistema, mas ajudar o usuário a continuar sua rotina.
+Sua função é apresentar um ambiente de trabalho rápido, oferecendo acesso às atividades recentes e permitindo a criação de novos conteúdos.
 
-O Dashboard prioriza:
+## Componentes
 
-- documentos recentes;
-- documentos favoritos;
-- últimas divisórias acessadas;
-- templates utilizados recentemente;
-- tarefas pendentes;
-- eventos próximos;
-- sessões recentes;
-- acesso rápido para criar um novo documento.
+### Templates com Últimos acessos (área central)
 
-O Dashboard deve responder à pergunta:
-
-> **"O que você deseja continuar fazendo hoje?"**
-
----
-
-# Divisórias (Sections)
-
-As divisórias representam os principais agrupadores de conteúdo do Journal.
-
-Inspiradas em fichários e planners físicos, elas organizam documentos relacionados a um mesmo tema.
+Exibe os documentos e funcionalidades recentemente utilizados em Templates.
 
 Exemplos:
 
-- Vestibular
-- Faculdade
-- Concurso
-- Trabalho
-- Projetos
-- Diário
-- Estudos
-- Pessoal
+- Fichário: Matemática
+- Agenda
+- Finanças
+- Cronograma
 
-Cada usuário poderá criar, renomear, reorganizar e excluir suas próprias divisórias.
+Limite de 6 templates.
 
----
+Caso seja primeiro acesso, Templates com as funcionalidades:
 
-# Documentos (Documents)
+- Nova Folha
+- Agenda
+- Notas
+- Cronograma de Estudos
+- Finanças
+- Nova divisória.
 
-O documento é a unidade principal do Journal.
+Esses templates poderão ser expandidos futuramente.
 
-Todo conteúdo produzido pelo usuário acontece dentro de um documento.
+### Menu Lateral Esquerdo
 
-Um documento é uma folha contínua, sem divisão em páginas, permitindo que textos, imagens, diagramas, tabelas, checklists e outros elementos coexistam livremente.
-
-Características:
-
-- rolagem infinita;
-- múltiplos tipos de conteúdo;
-- salvamento automático;
-- histórico de alterações (futuro);
-- organização dentro de divisórias.
-
----
-
-# Blocos (Blocks)
-
-Os documentos são compostos por blocos.
-
-Cada bloco representa um tipo de informação.
-
-Exemplos:
-
-- Texto
-- Checklist
-- Título
-- Imagem
-- Arquivo
-- Código
-- Tabela
-- Citação
-- Lista
-- Diagrama
-- Desenho (futuro)
-
-Essa abordagem torna os documentos flexíveis e expansíveis.
-
----
-
-# Templates
-
-Templates são modelos utilizados para criar novos documentos.
-
-Eles definem uma estrutura inicial, permitindo acelerar tarefas recorrentes.
-
-Exemplos:
-
-- Anotação de aula
-- Diário
-- Revisão
-- Sessão de estudos
-- Brainstorm
-- Projeto
-- Planejamento semanal
-
-Após criado, o documento torna-se independente do template.
-
----
-
-# Ferramentas
-
-As ferramentas representam funcionalidades complementares do Journal.
-
-Elas não constituem sua estrutura principal, mas interagem com documentos e divisórias.
-
-Inicialmente o Journal contará com ferramentas como:
+Menu lateral esquerdo com links para:
 
 - Agenda
-- Pomodoro
-- Finanças (Cofrinho)
+- Notas
+- Cronograma de Estudos
+- Finanças
+- Divisórias (ou Nova divisória)
 
-Novas ferramentas poderão ser adicionadas futuramente.
+### Menu Lateral Direito
+
+Menu lateral direito com links as últimas divisórias criadas.
+
+Exemplo:
+- Direito Constitucional
+- Direito do consumidor
+- Documentação Java
+- Resumos de Filosofia
+- CheatSheet
+- Referência Bibliográfica
+- + Nova Divisória
+
+Limite até 8 divisórias recém acessadas.
 
 ---
 
-# Relação entre os elementos
+# 5. Navegação Principal
+
+A navegação principal é composta por 5 regiões.
+
+## Navbar (Superior)
+
+Elementos:
+
+- Logo Journal
+- Nome Journal
+- Pomodoro
+- Menu Hamburger
+
+### Comportamento
+
+Logo
+
+→ retorna ao Dashboard
+
+Nome Journal
+
+→ retorna ao Dashboard
+
+Pomodoro
+
+→ abre a funcionalidade Pomodoro
+
+Menu Hamburger
+
+→ abre o menu completo da aplicação.
+
+---
+
+## Sidebar Esquerda
+
+Responsável pelas funcionalidades permanentes do sistema.
+
+Itens:
+
+- Agenda
+- Notas
+- Cronograma de Estudos
+- Finanças
+- Divisórias (ou Nova divisória)
+
+Esses itens existem independentemente do conteúdo criado pelo usuário.
+
+---
+
+## Sidebar Direita
+
+Responsável pela navegação das Divisórias.
+
+Exemplo:
 
 ```text
-Template
-      │
-      ▼
-Documento
-      │
-      ▼
-Divisória
-      │
-      ▼
-Dashboard
+
+
+- Direito Constitucional
+- Direito do consumidor
+- Documentação Java
+- Resumos de Filosofia
+- CheatSheet
+- Referência Bibliográfica
+- + Nova Divisória
 ```
 
-As ferramentas podem criar, atualizar ou consultar informações presentes nos documentos, sem alterar sua organização.
+Caso exista apenas um fichário:
+
+```text
+Divisória
+
+- Direito Constitucional
+
+- + Novo Divisória
+```
+
+Esta barra é dinâmica e varia conforme os fichários criados pelo usuário.
 
 ---
 
-# Ferramentas Integradas
+## Footer
 
-## Agenda
+Itens previstos:
 
-Responsável pelo gerenciamento de compromissos e eventos.
-
-Integrações possíveis:
-
-- criação de eventos;
-- lembretes;
-- calendário;
-- tarefas;
-- notificações.
-
-Os eventos podem ser vinculados a documentos específicos.
+- © Journal
+- Sobre
+- Tutorial (futuro)
+- Documentação
+- Versão da aplicação
 
 ---
 
-## Finanças (Cofrinho)
+# 6. Menu Hamburger
 
-Ferramenta destinada ao controle financeiro pessoal.
+O menu Hamburger reúne todas as funcionalidades da aplicação.
 
-Permite registrar:
-
-- receitas;
-- despesas;
-- categorias;
-- metas;
-- orçamento.
-
-Registros financeiros podem ser associados a documentos quando fizer sentido.
-
----
-
-## Pomodoro
-
-Ferramenta voltada para gerenciamento de foco.
-
-Permite:
-
-- iniciar sessões;
-- controlar intervalos;
-- registrar tempo de estudo;
-- atualizar estatísticas.
-
-Uma sessão concluída poderá gerar automaticamente um registro dentro de um documento.
-
----
-
-# Navegação
-
-A navegação do Journal é composta por três níveis.
-
-## Navegação Global
-
-Sempre disponível.
-
-Permite acessar:
+Itens:
 
 - Dashboard
+- Agenda
+- Cronograma de Estudos
+- Finanças
 - Divisórias
-- Ferramentas
-- Pesquisa
+- Pomodoro
 - Perfil
 - Configurações
+- Sobre
+- Sair
 
 ---
 
-## Navegação das Divisórias
+# 7. Organização das Divisórias
 
-Cada divisória funciona como uma árvore de navegação semelhante ao Explorer de um editor de código.
+As divisórias representam a organização pessoal do usuário.
 
-O usuário poderá:
+Exemplo:
 
-- expandir;
-- recolher;
-- reorganizar;
-- mover documentos.
+```text
+Vestibular
+
+├── Matemática
+├── Português
+├── História
+└── Biologia
+```
+
+Outro usuário pode possuir uma estrutura completamente diferente.
+
+```text
+Universidade
+
+├── Algoritmos
+├── Banco de Dados
+├── Engenharia de Software
+└── UX
+```
+
+Definir quantidade máxima com o Back-End.
 
 ---
 
-## Navegação dos Documentos
+# 8. Organização das Folhas
 
-Ao abrir um documento, o foco passa a ser totalmente o conteúdo.
-
-As ferramentas permanecem acessíveis, mas discretas, permitindo concentração durante a escrita.
-
----
-
-# Escalabilidade
-
-A arquitetura foi planejada para permitir a inclusão de novos recursos sem modificar sua estrutura principal.
+Cada divisória pode conter diversos folhas.
 
 Exemplos:
 
-- Assistente de IA
-- Gamificação
-- Widgets
-- Integração com Google Calendar
-- Sincronização em nuvem
-- Biblioteca de templates
-- Compartilhamento de documentos
+- Anotações
+- Resumos
+- Exercícios
+- Listas
+- Planejamentos
+- Arquivos
 
-Todos esses recursos serão adicionados como ferramentas ou serviços complementares, preservando o conceito central do Journal.
+A estrutura fica organizada da seguinte forma:
+
+```text
+Journal
+
+└── Divisória
+
+    ├── Folha
+    ├── Folha
+    ├── Folha
+    └── Folha
+```
 
 ---
 
-# Princípio Fundamental
+# 09. Hierarquia da Informação
 
-A estrutura do Journal baseia-se em um conceito simples:
+A estrutura principal do Journal segue a seguinte organização:
 
-> O usuário organiza sua vida por meio de documentos contínuos agrupados em divisórias.
+```text
+Journal
 
-Todas as demais funcionalidades existem para enriquecer essa experiência, nunca para substituí-la.
+↓
 
-Esse princípio orientará as decisões de UX, design e desenvolvimento ao longo da evolução do projeto.
+Dashboard
+
+↓
+
+Divisórias
+
+↓
+
+Folha
+
+↓
+
+Conteúdo
+```
+
+---
+# 10. Modelo Conceitual
+
+O Journal é estruturado a partir de dois grandes conceitos: **funcionalidades do sistema** e **conteúdo criado pelo usuário**.
+
+As funcionalidades fornecem os recursos da plataforma. O conteúdo representa a forma como cada usuário organiza suas informações.
+
+```text
+Journal
+│
+├── Funcionalidades
+│   │
+│   ├── Dashboard
+│   ├── Agenda
+│   ├── Notas
+│   ├── Cronograma de Estudos
+│   ├── Finanças
+│   ├── Pomodoro
+│   ├── Perfil
+│   ├── Configurações
+│   └── Sobre
+│
+└── Conteúdo do Usuário
+    │
+    ├── Divisórias
+    │
+    ├── Folhas
+    │
+    └── Conteúdo
+```
+
+## Relação entre os conceitos
+
+O conteúdo criado pelo usuário é organizado de forma hierárquica.
+
+```text
+Journal
+
+└── Divisória
+    │
+    ├── Folha
+    │   │
+    │   └── Conteúdo
+    │
+    ├── Folha
+    │
+    └── Folha
+```
+
+Cada **Divisória** funciona como um agrupador lógico de informações.
+
+Cada **Folha** representa uma unidade de trabalho dentro da divisória e pode assumir diferentes formatos, como:
+
+- Nota
+- Agenda
+- Cronograma de Estudos
+- Planejamento Financeiro
+- Lista
+- Texto livre
+
+O conteúdo de cada folha é definido pelo usuário e pode ser personalizado conforme sua necessidade.
+
+## Princípio do modelo
+
+O Journal não impõe uma estrutura fixa de organização.
+
+Enquanto as funcionalidades permanecem iguais para todos os usuários, as divisórias e folhas são criadas livremente, permitindo que cada pessoa organize seus estudos, projetos e rotina de acordo com sua própria lógica.
+
+
+# 11. Princípio Fundamental
+
+O Journal separa claramente dois conceitos:
+
+## Funcionalidades
+
+Representam recursos oferecidos pela aplicação.
+
+São fixas e iguais para todos os usuários.
+
+---
+
+## Organização
+
+Representa a forma como cada usuário organiza sua própria vida.
+
+Essa organização é totalmente personalizada através dos Fichários e Divisórias.
+
+Dessa forma, dois usuários podem utilizar exatamente a mesma aplicação, mas possuir estruturas completamente diferentes de organização.
+
+Este princípio orienta toda a Arquitetura da Informação do Journal.
